@@ -121,7 +121,7 @@ def Single_Plot(directory,Prev_directory,ALL):
             #MeanDegree=data["MeanDegreeList"]
 
             timetaken = data['timetaken']
-            #print("Time Taken:",timetaken)
+            print("Time Taken:",timetaken)
 
 
             HistMatrix = data['HistMatrix']

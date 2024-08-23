@@ -103,8 +103,8 @@ for i in range(len(PList)):
     EndMean = EndMeanMatrix[i]
     TheoryList = TheoryMatrix[i]
 
-    plt.scatter(CList,EndMedian,marker = 'x', s = 10,color= col,zorder=4)
-    plt.scatter(CList,EndMean,marker='+',s = 10,color= col,zorder=4)
+    plt.scatter(CList,EndMean,marker = 'x', s = 10,color= col,zorder=4)
+    #plt.scatter(CList,EndMedian,marker='+',s = 10,color= col,zorder=4)
     plt.plot(CList,TheoryList,color=col,alpha=0.5,label='Theory',linewidth=3,zorder=2)
 
     #plt.plot([1/(1-P),1/(1-P)],[])
