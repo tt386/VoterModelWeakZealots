@@ -113,8 +113,8 @@ for i in range(len(PList)):
 ax.set_xticks([0,2,4,6,8,10])#xticks)
 ax.set_xticklabels([r'$0$',r'$2$',r'$4$',r'$6$',r'$8$',r'$10$'])
 
-ax.set_yticks([0.2,0.4,0.6,0.8,1.0])
-ax.set_yticklabels([r'$0.2$',r'$0.4$',r'$0.6$',r'$0.8$',r'$1.0$'])
+ax.set_yticks([0.0,0.2,0.4,0.6,0.8,1.0])
+ax.set_yticklabels([r'$0.0$',r'$0.2$',r'$0.4$',r'$0.6$',r'$0.8$',r'$1.0$'])
 
 """
 ax.set_yticks([P,P/(1-F),1])#yticks)

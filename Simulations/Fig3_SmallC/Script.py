@@ -3,8 +3,6 @@ from Params import *
 import sys
 sys.path.insert(0,'../CoreFunctions')
 
-from Core_2 import Init, Iterate,  Observe, MeasureMutants, Plot, GraphStats, Escape_Absorbing
-
 import time
 
 import copy
@@ -144,7 +142,7 @@ for r in range(Repeats):
 
     #print(ActiveList)
 
-    ##############################################################################
+    ###########################################################################
     #The Process
 
     WEAKNUM = copy.copy(Z)
@@ -174,7 +172,9 @@ for r in range(Repeats):
                     strongnum += 1
 
             #Evaluate prob of adopting strong position
-            probstrong = strongnum / (strongnum + F*(len(GraphNeighbourList[randnode])-strongnum))
+            probstrong = (strongnum / 
+                    (strongnum + 
+                        F*(len(GraphNeighbourList[randnode])-strongnum)))
 
             if random.uniform(0,1) < probstrong:
                 GraphList[randnode] = 0
@@ -215,7 +215,8 @@ for r in range(Repeats):
                             ChangeableList.remove(i)
                         continue
                 """
-                ActiveList[randnode] = len(GraphNeighbourList[randnode]) - ActiveList[randnode]
+                ActiveList[randnode] = (len(GraphNeighbourList[randnode])
+                        - ActiveList[randnode])
                 if ActiveList[randnode] == 0:
                     ChangeableList.remove(randnode)
                 for i in checklist:
@@ -226,7 +227,12 @@ for r in range(Repeats):
                                 try:
                                     ChangeableList.remove(i)
                                 except:
-                                    print("C=",C,"randnode",randnode,"type=",GraphList[randnode],"neighbornum = ", len(checklist),"removeable type:",GraphList[i],"WEAKNUM",WEAKNUM,"ChangeableList len",len(ChangeableList))
+                                    print("C=",C,"randnode",randnode,
+                                            "type=",GraphList[randnode],
+                                            "neighbornum = ", len(checklist),
+                                            "removeable type:",GraphList[i],
+                                            "WEAKNUM",WEAKNUM,
+                                            "ChangeableList len",len(ChangeableList))
                                     sys.exit()
                                     
                         else:
@@ -246,7 +252,8 @@ for r in range(Repeats):
                 WEAKNUM -= 1
 
                 #Update changeable list
-                ActiveList[randnode] = len(GraphNeighbourList[randnode]) - ActiveList[randnode]
+                ActiveList[randnode] = (len(GraphNeighbourList[randnode])
+                        - ActiveList[randnode])
                 ChangeableList.add(randnode)
                 if ActiveList[randnode] == 0:
                     ChangeableList.remove(randnode)
