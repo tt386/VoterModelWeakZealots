@@ -103,7 +103,13 @@ for i in range(len(PList)):
     EndMean = EndMeanMatrix[i]
     TheoryList = TheoryMatrix[i]
 
+
+    if PList[0]==PList[1]:
+        vertcol = 'k'
+    else:
+        vertcol = col
     plt.scatter(CList,EndMean,marker = 'x', s = 10,color= col,zorder=4)
+    plt.plot([1/(1-P),1/(1-P)],[0,1],linestyle='dashed',linewidth=0.5,color=vertcol,zorder=3)
     #plt.scatter(CList,EndMedian,marker='+',s = 10,color= col,zorder=4)
     plt.plot(CList,TheoryList,color=col,alpha=0.5,label='Theory',linewidth=3,zorder=2)
 
