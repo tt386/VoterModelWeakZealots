@@ -42,7 +42,7 @@ starttime = time.time()
 
 
 
-Time = int(1e8)#2e8)
+Time = int(1e6)#2e8)
 
 IGNORESTATIONARY = False
 
@@ -65,11 +65,21 @@ Params = ([1000,0.99,1],
 #        [10000,0.99,10])
 """
 
-Params = ([1000,0.9,10,'k'],
-        [1000,0.98,10,'m'],
-        [500,0.9,10,'y'],
-        [1000,0.9,90,'g'],
-        [1000,0.99,1,'c'])
+"""
+Params = ([100,0.9,0.01,'k'],
+        [1000,0.9,0.01,'m'],
+        [4000,0.9,0.01,'y'],
+        [100,0.99,0.09,'g'],
+        [1000,0.99,0.09,'c'],
+        [4000,0.99,0.09,'k'])
+"""
+
+Params = ([20,0.9,0.02,'k'],
+        [100,0.9,0.02],
+        [1000,0.9,0.02],
+        [20,0.7,0.35,'k'],
+        [100,0.7,0.35],
+        [1000,0.7,0.35])
 
 
 Data = []
@@ -81,8 +91,9 @@ ax = fig.add_subplot(111)
 for i in Params:
     N = i[0]
     F = i[1]
-    Z = i[2]
-    z = Z/N
+    z = i[2]
+    Z = round(z*N)
+    #z = Z/N
 
     zs = 1/N
     ZS = 1
@@ -105,7 +116,7 @@ for i in Params:
     ###Simulation Of Complete################
     #########################################
 
-
+    """
     for t in range(Time):
         if t%(Time/10) == 0:
             print("At time",t,"n=",n)
@@ -116,11 +127,9 @@ for i in Params:
 
 
         downprob = n/(N-Z-ZS) * (N-n-Z) / (N-n-Z+F*(n+Z))
-        """
-        upprob = (N-Z-n)/(N-Z) * F*(n+Z) / (N-Z-n-1 + F*(n+Z))
+        #upprob = (N-Z-n)/(N-Z) * F*(n+Z) / (N-Z-n-1 + F*(n+Z))
         
-        downprob = n/(N-Z) * (N-Z-n) / (N-Z-n + F*(n-1+Z))
-        """
+        #downprob = n/(N-Z) * (N-Z-n) / (N-Z-n + F*(n-1+Z))
 
         tot = upprob+downprob
 
@@ -153,16 +162,33 @@ for i in Params:
         #if t> 0.9*time:
         #histlist.append((n+Z)/N)
         hist[int(n + Z)] += 1
+    """
 
-    plt.plot(np.linspace(0,1,N),hist/sum(hist)*N,color=i[3],linewidth=3,linestyle='dotted')
+    if N < 100:
+        linestyle = 'dotted'
+    elif N == 100:
+        linestyle = 'dashed'
+    elif N == 1000:
+        linestyle = 'solid'
+
+    #plt.plot(np.linspace(0,1,N),hist/sum(hist)*N,color=i[3],linewidth=3,linestyle='dotted')
 
     n, Ana = CompleteDist(N,F,z*N)
 
+    #print(n)
+    #print(Ana)
 
     mean = integrate.simpson(y=Ana*(n+z),x=n)
     print("mean = ",mean)
 
-    plt.plot(n+z,Ana,color=i[3],alpha=0.5,linewidth=3)
+    if abs(z/(1-F) -0.2) < 0.1:
+        color = 'k'
+        alpha = 1
+    else:
+        color = 'grey'
+        alpha = 0.5
+    plt.plot(n+z,Ana,color=color,linewidth=2,alpha=alpha,linestyle=linestyle)
+
 
 
 
@@ -171,12 +197,12 @@ for i in Params:
 ax.set_xticks([0,0.2,0.4,0.6,0.8,1])#xticks)
 ax.set_xticklabels([r'$0.0$',r'$0.2$',r'$0.4$',r'$0.6$',r'$0.8$',r'$1.0$'])
 
-ax.set_yticks([0,2,4,6,8,10,12,14,16])
-ax.set_yticklabels([ r'$0$',r'$2$',r'$4$',r'$6$',r'$8$',r'$10$',r'$12$',r'$14$',r'$16$'])
+ax.set_yticks([0,10,20,30,40])
+ax.set_yticklabels([ r'$0$',r'$10$',r'$20$',r'$30$',r'$40$'])
 
 #plt.ylim(P,np.ceil(10*max(EndMedian))/10)#(P,1)
-plt.ylim(0,16)
-plt.xlim(0,1)
+plt.ylim(0,20)
+plt.xlim(0.1,1)
 
 plt.xticks(fontsize=7,fontname = "Arial")
 plt.yticks(fontsize=7,fontname = "Arial")

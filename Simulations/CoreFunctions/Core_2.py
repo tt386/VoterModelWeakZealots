@@ -867,6 +867,7 @@ def CompleteDist(N,F,Z):
         integral = integrate.quad(lambda n: alpha(n,z,F)/beta(n,z,F),0,n)[0]
 
         if not IGNORESTATIONARY:
+            print(2*integral - np.log(beta(n,z,F)))
             P = np.exp(2*integral - np.log(beta(n,z,F)))
 
         else:
