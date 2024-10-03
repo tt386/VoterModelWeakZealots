@@ -165,14 +165,12 @@ for i in Params:
     """
 
     if N < 200:
-        color = 'grey'
+        color = 'lightgrey'
         alpha=0.5
     elif N == 200:
-        color = 'grey'
-        alpha = 1
+        color = 'darkgrey'
     elif N == 2000:
-        color = 'black'
-        alpha = 1
+        color = 'dimgrey'
 
     #plt.plot(np.linspace(0,1,N),hist/sum(hist)*N,color=i[3],linewidth=3,linestyle='dotted')
 
@@ -188,12 +186,12 @@ for i in Params:
         linestyle = 'solid'
     else:
         linestyle='dashed'
-    plt.plot(n+z,Ana,color=color,linewidth=2,alpha=alpha,linestyle=linestyle)
+    plt.plot(n+z,Ana,color=color,linewidth=2,linestyle=linestyle)
 
 
 
-plt.plot([0.25,0.25],[0,20],linestyle='dotted',color='k')
-plt.plot([1,1],[0,20],linestyle='dotted',color='k')
+plt.plot([0.25,0.25],[0,20],linestyle='solid',color='k')
+plt.plot([1,1],[0,20],linestyle='dashed',color='k')
 
 
 
