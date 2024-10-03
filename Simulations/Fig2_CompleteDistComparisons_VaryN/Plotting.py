@@ -74,12 +74,12 @@ Params = ([100,0.9,0.01,'k'],
         [4000,0.99,0.09,'k'])
 """
 
-Params = ([20,0.9,0.02,'k'],
-        [100,0.9,0.02],
-        [1000,0.9,0.02],
+Params = ([20,0.8,0.05,'k'],
+        [200,0.8,0.05],
+        [2000,0.8,0.05],
         [20,0.7,0.35,'k'],
-        [100,0.7,0.35],
-        [1000,0.7,0.35])
+        [200,0.7,0.35],
+        [2000,0.7,0.35])
 
 
 Data = []
@@ -164,12 +164,15 @@ for i in Params:
         hist[int(n + Z)] += 1
     """
 
-    if N < 100:
-        linestyle = 'dotted'
-    elif N == 100:
-        linestyle = 'dashed'
-    elif N == 1000:
-        linestyle = 'solid'
+    if N < 200:
+        color = 'grey'
+        alpha=0.5
+    elif N == 200:
+        color = 'grey'
+        alpha = 1
+    elif N == 2000:
+        color = 'black'
+        alpha = 1
 
     #plt.plot(np.linspace(0,1,N),hist/sum(hist)*N,color=i[3],linewidth=3,linestyle='dotted')
 
@@ -182,15 +185,15 @@ for i in Params:
     print("mean = ",mean)
 
     if abs(z/(1-F) -0.2) < 0.1:
-        color = 'k'
-        alpha = 1
+        linestyle = 'solid'
     else:
-        color = 'grey'
-        alpha = 0.5
+        linestyle='dashed'
     plt.plot(n+z,Ana,color=color,linewidth=2,alpha=alpha,linestyle=linestyle)
 
 
 
+plt.plot([0.25,0.25],[0,20],linestyle='dotted',color='k')
+plt.plot([1,1],[0,20],linestyle='dotted',color='k')
 
 
 
