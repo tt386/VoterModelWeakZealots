@@ -21,9 +21,34 @@ We have included all data files and results pertinent to the manuscript (except 
 
 ## Brief description of voter model
 
+The voter model takes place on a network (of $N$ nodes) where each node subscribes to an opinion, and at each simulation step a randomly selected node adopts the opinion of a random neighbour.
+
+In this modified version, there are two opinions, a strong and weak version. The weak version has a fitness factor $F\leq1$ of being selected as a node updates its opinion. Furthermore, a proportion $z$ of the nodes are zealots, which subscribe to the weak opinion and never update their opinions.
 
 ## Structure of simulation code
 
+### Network Creation
+
+`GraphList`: A 1D numpy array of length $N$: each element holds an integer corresponding to the variety of node. 0 strong, 1 Weak, 2 Zealot.
+
+`GraphNeighbourList`: A 1D numpy array of length $N$: each element holds a set of indices for neighbours of the node corresponding to the element.
+
+`ChangeAbleList`: A 1D list of all nodes which have the ability to change in the next timestep.
+
+`ActiveList`: A 1D list of length $N$: each element holds the number of active links a node possesses.
+
+### Process
+
+A random non-zealot is chosen to update its opinon: this is done by generating a random number i between 0 and N and ensuring that `GraphList[i]` isn't equal to 2.
+
+If the chosen node is not in ChangeableList, then its opinion is unable to be updated by its neighbours as they all agree! Therefore we skip the rest of the simulation step, to save time.
+On the other hand, if it is in ChangeableList, GraphNeighbourList is used to evaluate the proportion of neighbours who are strong. The probability of becoming/remaining strong is then determined: if this probability is met then it becomes/remains strong. Else, it becomes/remains weak.
+
+If the node changed its opinion, the number of active links it has flips from its original value, A, to its new value L-A, where L is the number of neighbours the node has (given by `len(GraphNeighbourList)`). Then, if this number is $0$, the node is removed from the ChangeableList, as it now agrees with all of its neighbours.
+
+If the node changed its opinion, each neighbour also also updates its number of active links in ActiveList - should the number drop to 0, it should similarly be removed from CHangeableList. Conversely, if the number of active links increases from 0, it should be added to ChangeableList. 
+
+If we make the decision to try to simulate an infinite graph, to ensure the absorbing state is not met for the giant component we randomly select a weak node to become strong in the event that all the free nodes becomes weak.
 
 ## Directory structure and exectuing code
 
