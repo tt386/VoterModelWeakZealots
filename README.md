@@ -82,32 +82,31 @@ Here are the directories which house the code used to generate figures for the p
 
 #### Fig1_InitialObservation
 
-The case of a single $F,z$ choice to illustrate the nontrivial behviour of the system as $C$ is varied
+The case of a single $F,z$ choice to illustrate the nontrivial behviour of the system as $C$ is varied: each data point corresponds to the mean of the last 10% of modified voter model proportion of weak opinion.
 ![Initial Finding](./RawFigures/Fig1_c.png)
 
 #### Fig2_CompleteDistComparisons 
 
-For $P=0.1, \Phi=10^{-5}$ we vary the length of the Selection region and calculate the change in Resistant pests over a domain so large that the periodic effects of the circular convolution have negligible effect. The result is a detailed global minimum of change in Resistance number per Selection region size with changing Selection region size.
+Comparisons of the (analytical and simulation-obtained) long-term distribution of the modified voter model on the complete graph for a variety of $z$, $F$ and $N$ values.
 
 ![Vary Params](./RawFigures/Fig2.png)
 
 
 #### Fig2_CompleteDistComparisons_VaryN
 
-For $P=0.1, \Phi=10^{-5}$ we run the same simulation as above, except with the additional option of restricting migration to only occur during the selection phase, the post-selection phase, both phases, or neither phase. Running once for each possibility with the same 
+Comparisons of the long-term distribution of the modified voter model on the complete graph for a variety of $z$, $F$ and $N$ values, particularly emphasising the effect of how the predicted distributions tend to the infinite mean-field result as $N\rightarrow\infty$.
 
 ![Different N](./RawFigures/Fig2_b.png)
 
 
 #### Fig3_SmallC
 
-For $P=0.1, \Phi=10^{-5}$ we run an isolated selection region case for a given $L$, for the sake of visualising how the distribution of each subpopulation changes over a generation 
-
+Illustration of the accuracy of analytical results for the $C<1$ case: $F$ is set to 1 to be general, and for a variety of $z$ values $C$ is varied: each data point is the mean of the last 10% of modified voter model proportion of the weak opinion. 
 ![Small C](./RawFigures/Fig3_c.png)
 
 #### Fig4_FullTheory
 
-We once again vary the size of the Selection region size $L$, but for different $P$ or $\Phi$ values in `Vary_PAP` and `Vary_Phi`, respectively. This is in order to measure how the region of highest curvature changes with these values, to validate the analytical theory.
+Illustration of the accuracy of analytical approximate results for all $C$: for a variety of $F$ and $z$ values $C$ is varied: each data point is the mean of the last 10% of modified voter model proportion of the weak opinion. 
 
 ![Full Approx Vary F](./RawFigures/Fig4_a.png)
 
