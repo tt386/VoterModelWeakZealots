@@ -1,4 +1,4 @@
-# Code for "Tuning Selection pressure..."
+# Code for "How social network structure impacts the ability of zealots to promote weak opinions"
 
 ## Overview
 
@@ -15,7 +15,7 @@
 
 ## Publication
 
-Manuscript published in XXX in 2024 by Thomas Tunstall. The corresponding preprint can be found on arXiv XXX.
+{Manuscript}[https://doi.org/10.1103/PhysRevE.111.024311] published in 2025 by Thomas Tunstall.
 
 We have included all data files and results pertinent to the manuscript (except those larger than 100MB).
 
