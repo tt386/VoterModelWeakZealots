@@ -15,7 +15,7 @@
 
 ## Publication
 
-{Manuscript}[https://doi.org/10.1103/PhysRevE.111.024311] published in 2025 by Thomas Tunstall.
+[Manuscript](https://doi.org/10.1103/PhysRevE.111.024311) published in 2025 by Thomas Tunstall.
 
 We have included all data files and results pertinent to the manuscript (except those larger than 100MB).
 
